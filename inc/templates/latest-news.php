@@ -4,8 +4,7 @@
             <div class="col-md-8">
                 <div class="main-container fl-wrap fix-container-init">
                     <div class="section-title">
-                        <h2>Lastest World News</h2>
-                        <h4>Don't miss daily news</h4>
+                        <h2>Lastest Blogs</h2>
                         <div class="ajax-nav">
                             <ul>
                                 <li><a href="ajax/category1.html" class="current_page">World</a></li>
@@ -25,7 +24,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="section-title sect_dec">
-                        <h2>Top Stories</h2>
+                        <h2>Trending</h2>
                         <h4>Don't miss daily news</h4>
                     </div>
                     <div class="grid-post-wrap">
@@ -247,8 +246,8 @@
                             <div class="content-tabs-wrap tabs-act tabs-widget fl-wrap">
                                 <div class="content-tabs fl-wrap">
                                     <ul class="tabs-menu fl-wrap no-list-style">
-                                        <li class="current"><a href="#tab-popular"> Popular News </a></li>
-                                        <li><a href="#tab-resent">Resent News</a></li>
+                                        <li class="current"><a href="#tab-popular"> Popular Blogs </a></li>
+                                        <li><a href="#tab-resent">Recent Blogs</a></li>
                                     </ul>
                                 </div>
                                 <div class="tabs-container">
@@ -390,7 +389,7 @@
                     </div>
                     <div class="box-widget fl-wrap">
                         <div class="box-widget-content">
-                            <div id="weather-widget" class="ideaboxWeather" data-city="New York"></div>
+                            <div id="weather-widget" class="ideaboxWeather" data-city="New Delhi"></div>
                         </div>
                     </div>
                     <div class="box-widget fl-wrap">

@@ -8,7 +8,7 @@
  *
  * @package Mak_Blog
  */
-
+$mmb = get_option('mmb');
 ?>
 
 		<footer class="fl-wrap main-footer">
@@ -18,15 +18,19 @@
 						<div class="col-md-4">
 							<div class="footer-widget">
 								<div class="footer-widget-content">
-									<a href="index.html" class="footer-logo"><img src="<?=get_template_directory_uri()?>/assets/images/logo2.png" alt=""></a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eaque ipsa quae ab illo inventore veritatis et quasi architecto. </p>
+									<a href="<?=home_url('/')?>" class="footer-logo"><img src="<?=@$mmb['footer_logo']?>" alt="<?=bloginfo('name')?> logo in footer" /></a>
+									<p><?=@$mmb['bio']?></p>
 									<div class="footer-social fl-wrap">
 										<ul>
-											<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-											<li><a href="#" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
+											<?= !empty($mmb['facebook']) ? '<li><a href="' . $mmb['facebook'] . '" target="_blank"><i class="fab fa-facebook-f"></i></a></li>' : '' ?>
+											<?= !empty($mmb['twitter']) ? '<li><a href="' . $mmb['twitter'] . '" target="_blank"><i class="fab fa-twitter"></i></a></li>' : '' ?>
+											<?= !empty($mmb['instagram']) ? '<li><a href="' . $mmb['instagram'] . '" target="_blank"><i class="fab fa-instagram"></i></a></li>' : '' ?>
+											<?= !empty($mmb['linkedin']) ? '<li><a href="' . $mmb['linkedin'] . '" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>' : '' ?>
+											<?= !empty($mmb['pinterest']) ? '<li><a href="' . $mmb['pinterest'] . '" target="_blank"><i class="fab fa-pinterest"></i></a></li>' : '' ?>
+											<?= !empty($mmb['youtube']) ? '<li><a href="' . $mmb['youtube'] . '" target="_blank"><i class="fab fa-youtube"></i></a></li>' : '' ?>
+											<?= !empty($mmb['tiktok']) ? '<li><a href="' . $mmb['tiktok'] . '" target="_blank"><i class="fab fa-tiktok"></i></a></li>' : '' ?>
+											<?= !empty($mmb['reddit']) ? '<li><a href="' . $mmb['reddit'] . '" target="_blank"><i class="fab fa-reddit-alien"></i></a></li>' : '' ?>
+											<?= !empty($mmb['tumblr']) ? '<li><a href="' . $mmb['tumblr'] . '" target="_blank"><i class="fab fa-tumblr"></i></a></li>' : '' ?>
 										</ul>
 									</div>
 								</div>
@@ -34,32 +38,32 @@
 						</div>
 						<div class="col-md-2">
 							<div class="footer-widget">
-								<div class="footer-widget-title">Categories </div>
+								<div class="footer-widget-title"><?=isset(get_nav_menu_locations()['footer_1']) ? wp_get_nav_menu_object(get_nav_menu_locations()['footer_1'])->name : '&nbsp;'?></div>
 								<div class="footer-widget-content">
 									<div class="footer-list footer-box fl-wrap">
-										<ul>
-											<li> <a href="#">Politics</a></li>
-											<li> <a href="#">Technology</a></li>
-											<li> <a href="#">Business</a></li>
-											<li> <a href="#">Sports</a></li>
-											<li> <a href="#">Science</a></li>
-										</ul>
+										<?php
+										wp_nav_menu(array(
+											'theme_location' => 'footer_1',
+											'container'      => false,
+											'menu_class'     => '',
+										));
+										?>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="footer-widget">
-								<div class="footer-widget-title">Links</div>
+								<div class="footer-widget-title"><?=isset(get_nav_menu_locations()['footer_2']) ? wp_get_nav_menu_object(get_nav_menu_locations()['footer_2'])->name : '&nbsp;'?></div>
 								<div class="footer-widget-content">
 									<div class="footer-list footer-box fl-wrap">
-										<ul>
-											<li> <a href="#">Home</a></li>
-											<li> <a href="#">About</a></li>
-											<li> <a href="#">Contacts</a></li>
-											<li> <a href="#">News</a></li>
-											<li> <a href="#">Shop</a></li>
-										</ul>
+										<?php
+										wp_nav_menu(array(
+											'theme_location' => 'footer_2',
+											'container'      => false,
+											'menu_class'     => '',
+										));
+										?>
 									</div>
 								</div>
 							</div>

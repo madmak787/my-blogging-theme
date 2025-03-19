@@ -47,3 +47,21 @@ p:has(br:only-child) {
 	position: relative;
 	margin: 15px 0 15px 15px;
 }
+.wpcf7-form-control-wrap > span {
+	position: absolute;
+	margin: 2.8rem 0 0 1.95rem;
+}
+.wpcf7-response-output {
+	position: absolute;
+	left: 15rem;
+	bottom: 0;
+}
+.no-topbar #wrapper {
+	padding-top: 70px;
+}
+.header-tooltip a {
+	color: #ffffff;
+}
+.hero-slider-wrap h4 a {
+	text-shadow: 0 0 15px #ffffff;
+}

@@ -50,6 +50,9 @@ function mak_blog_setup() {
 	register_nav_menus(
 		array(
 			'primary' => esc_html__( 'Primary', 'mak-blog' ),
+			'footer_1' => esc_html__( 'Footer 1', 'mak-blog' ),
+			'footer_2' => esc_html__( 'Footer 2', 'mak-blog' ),
+			'privacy' => esc_html__( 'Privacy & Terms', 'mak-blog' ),
 		)
 	);
 
@@ -114,6 +117,9 @@ function mak_blog_scripts() {
 	wp_enqueue_style( 'mak-blog-plugins', get_template_directory_uri() . '/assets/css/plugins.css', array(), _S_VERSION );
 	wp_enqueue_style( 'mak-blog-styles', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION );
 	wp_enqueue_style( 'mak-blog-color', get_template_directory_uri() . '/assets/css/color.css', array(), _S_VERSION );
+	if ( class_exists( 'WooCommerce' ) ) {
+		wp_enqueue_style( 'mak-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.css', array(), _S_VERSION );
+	}	
 	wp_enqueue_style( 'mak-blog-style', get_stylesheet_uri(), array(), _S_VERSION );
 	
 	wp_deregister_script('jquery');
@@ -140,3 +146,22 @@ function clean_empty_p_tags($content) {
 add_filter('the_content', 'clean_empty_p_tags', 20);
 
 show_admin_bar(false);
+
+// Update post views count when post is viewed
+function increment_post_views($post_id) {
+    if (!is_single() || empty($post_id)) {
+        return;
+    }
+    // Get the current views count
+    $views = get_post_meta($post_id, 'post_views', true);
+    // Increment the count or set it to 1 if not set
+    $views = $views ? (int)$views + 1 : 1;
+    // Update the post meta
+    update_post_meta($post_id, 'post_views', $views);
+}
+// Hook into WordPress template
+add_action('wp', function () {
+    if (is_single()) {
+        increment_post_views(get_the_ID());
+    }
+});
